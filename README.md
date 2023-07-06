@@ -9,10 +9,10 @@
 <?xml version='1.0' encoding='UTF-16' ?>
 <?xml-stylesheet type="text/xsl" href="union.xsl"?>
 <root>
-<one>yooooooooooooooooooooo</one>
-<two>twoooooooooo</two>
-<three>threeeeeeeee</three>
-<four>fourrrrrrrrrr</four>
+<one type='string'>yooooooooooooooooooooo</one>
+<two type='int'>123</two>
+<three type='string'>threeeeeeeee</three>
+<four type='double'>123.01</four>
 </root>
 ```
 
@@ -23,10 +23,10 @@
 <?xml version='1.0' encoding='UTF-16' ?>
 <?xml-stylesheet type="text/xsl" href="union.xsl"?>
 <root>
-<one>yooooooooooooooooooooo</one>
-<two>twoooooooooo</two>
-<three>threeeeeeeee</three>
-<four>fourrrrrrrrrr</four>
+<one type='string'>yooooooooooooooooooooo</one>
+<two type='int'>123</two>
+<three type='string'>threeeeeeeee</three>
+<four type='double'>123.01</four>
 </root>
 ```
 
@@ -47,24 +47,24 @@ ms.Save();
 <p>Add new elements to Memory and save to filesystem</p>
 
 ```C#
-ms.Add(new StorageElement("one", "oneeeeeeeeee"));
-ms.Add(new StorageElement("two", "twoooooooooo"));
-ms.Add(new StorageElement("three", "threeeeeeeee"));
-ms.Add(new StorageElement("four", "fourrrrrrrrrr"));
+ms.Add(new StorageElement("one", "123.23","double"));
+ms.Add(new StorageElement("two", "twoooooooooo", "string"));
+ms.Add(new StorageElement("three", "45", "int"));
+ms.Add(new StorageElement("four", "fourrrrrrrrrr", "string"));
 ms.Save();
 ```
 
 <p>If you remove an item from memory dont forget to commit the changes to the storage file/p>
 
 ```C#
-ms.Remove(new StorageElement("four", null));
+ms.Remove("four"));
 ms.Save();
 ```
 
 <p>If you want to update a value and commit changes</p>
 
 ```C#
-ms.Update(new StorageElement("one", "yooooooooooooooooooooo"));
+ms.Update(new StorageElement("one", "yooooooooooooooooooooo", "string"));
 ms.Save();
 ```
 
