@@ -115,11 +115,11 @@ namespace MicroLocalStorage
                     file.Close();
                 }
             }
-            public IStorageElement Get(IStorageElement element) => FindElement(element);
+            public IStorageElement Get(IStorageElement element) => FetchElement(element);
             public void Add(IStorageElement element) => AddElement(element);
             public void Update(IStorageElement element) => UpdateElement(element);
             public void Remove(string keyName) => RemoveElement(keyName);
-            StorageElement FindElement(IStorageElement element)
+            StorageElement FetchElement(IStorageElement element)
             {
                 if (InMemoryStorage.TryGetValue(element.Name, out var Se))
                     return Se;
@@ -144,7 +144,7 @@ namespace MicroLocalStorage
             {
                 if (element.Name != "" && element.Name != "")
                 {
-                    if (!FindElement(element))
+                    if (!FindElement(element.Name))
                     {
                         InMemoryStorage.Add(element.Name, new StorageElement(element.Name, element.Value, element.Type));
                     }
@@ -152,7 +152,7 @@ namespace MicroLocalStorage
             }
             void UpdateElement(IStorageElement element)
             {
-                if (FindElement(element))
+                if (FindElement(element.Name))
                 {
                     InMemoryStorage[element.Name] = new StorageElement(element.Name, element.Value, element.Type);
                 }
