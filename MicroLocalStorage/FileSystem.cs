@@ -115,15 +115,16 @@ namespace MicroLocalStorage
                     file.Close();
                 }
             }
+            public IStorageElement Get(IStorageElement element) => FindElement(element);
             public void Add(IStorageElement element) => AddElement(element);
             public void Update(IStorageElement element) => UpdateElement(element);
             public void Remove(string keyName) => RemoveElement(keyName);
-            bool FindElement(IStorageElement element)
+            StorageElement FindElement(IStorageElement element)
             {
                 if (InMemoryStorage.TryGetValue(element.Name, out var Se))
-                    return true;
+                    return Se;
                 else
-                    return false;
+                    throw new Exception("Element does not exist, please add to datastore and save");
             }
             bool FindElement(string keyName)
             {
