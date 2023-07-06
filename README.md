@@ -3,7 +3,7 @@
 <p>Always wanted to keep some settings local but found it to much work and stress to use the built in tools.</p>
 <p>This library has been made to keep local settings easy to keep and store.</p>
 
-<p>Storage file is used to store data in a well formed xml</p>
+<p>Storage file is used to store data in a well formed xml file</p>
 
 ```Xml
 <?xml version='1.0' encoding='UTF-16' ?>
